@@ -1,184 +1,221 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~/zaidan/portfolio</title>
+    <title>Portfolio - Muhammad Zaidan</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        mono: ['"Fira Code"', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        term: {
-                            bg: '#0d1117',      /* GitHub Dark Dimmed inspired */
-                            card: '#161b22',
-                            border: '#30363d',
-                            text: '#c9d1d9',
-                            green: '#2ea043',
-                            blue: '#58a6ff',
-                            accent: '#7ee787'
-                        }
-                    },
-                    animation: {
-                        'blink': 'blink 1s step-end infinite',
-                    },
-                    keyframes: {
-                        blink: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0' },
-                        }
+                        primary: '#0f172a', // Slate 900
+                        secondary: '#475569', // Slate 600
+                        accent: '#2563eb', // Blue 600
+                        bg: '#f8fafc', // Slate 50
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        /* Custom subtle animations */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="font-mono antialiased min-h-screen flex flex-col items-center py-10 px-4 md:px-0">
+<body class="bg-bg text-primary antialiased selection:bg-accent selection:text-white">
 
-    <div class="w-full max-w-3xl space-y-8">
-        
-        <nav class="flex justify-between items-center text-sm text-term-text border-b border-term-border pb-4 w-full">
-            <div class="flex gap-2">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            </div>
-            <div class="text-term-border">root@zaidan-pc:~/portfolio</div>
-        </nav>
-
-        <header class="flex flex-col md:flex-row gap-8 items-start md:items-center py-8">
-            <div class="relative shrink-0">
-                <div class="w-32 h-32 rounded-full p-1 border-2 border-term-green/50 overflow-hidden bg-term-card relative z-10">
-                    <img src="profile.png" alt="Zaidan" class="w-full h-full object-cover rounded-full opacity-90 hover:opacity-100 transition">
-                </div>
-                <div class="absolute inset-0 bg-term-green blur-2xl opacity-20 rounded-full"></div>
-            </div>
-
-            <div class="space-y-3">
-                <div class="flex items-center gap-2 text-term-green font-bold text-lg">
-                    <span>➜</span>
-                    <span>~</span>
-                    <span class="text-blue-400">whoami</span>
-                </div>
-                
-                <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Muhammad Zaidan</h1>
-                
-                <p class="text-term-text leading-relaxed max-w-lg">
-                    <span class="text-blue-400">const</span> <span class="text-yellow-200">role</span> = <span class="text-orange-300">"Full Stack Developer"</span>;<br>
-                    <span class="text-gray-500">// Membangun sistem internal yang kompleks, <br>// POS hybrid, & aplikasi web modern.</span>
-                </p>
-
-                <div class="flex flex-wrap gap-2 pt-2">
-                    <span class="px-2 py-1 bg-blue-900/30 text-blue-300 text-xs border border-blue-900 rounded">React/Next.js</span>
-                    <span class="px-2 py-1 bg-indigo-900/30 text-indigo-300 text-xs border border-indigo-900 rounded">PHP CodeIgniter</span>
-                    <span class="px-2 py-1 bg-yellow-900/30 text-yellow-300 text-xs border border-yellow-900 rounded">MySQL</span>
-                    <span class="px-2 py-1 bg-green-900/30 text-green-300 text-xs border border-green-900 rounded">Capacitor</span>
-                </div>
-            </div>
-        </header>
-
-        <div class="border-t border-term-border pt-2 pb-6">
-            <div class="flex items-center gap-2 text-sm">
-                <span class="text-term-green">➜</span>
-                <span class="text-blue-400">~/portfolio</span>
-                <span class="text-gray-500">git log --oneline --graph</span>
-                <span class="w-2 h-4 bg-term-text animate-blink inline-block align-middle ml-1"></span>
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="font-bold text-lg tracking-tight">M.Z.</span>
+            <div class="flex items-center gap-4">
+                <a href="mailto:email@anda.com" class="text-sm font-medium hover:text-accent transition">
+                    <i class="fa-regular fa-envelope mr-1"></i> <span data-key="nav_contact">Contact</span>
+                </a>
+                <button onclick="toggleLang()" class="text-xs font-bold border border-slate-300 rounded px-2 py-1 hover:bg-slate-100 transition uppercase w-12 text-center">
+                    <span id="lang-indicator">ID</span>
+                </button>
             </div>
         </div>
+    </nav>
 
-        <section class="grid gap-4">
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20 space-y-16">
 
-            <div class="group bg-term-card border border-term-border rounded-md p-4 hover:border-gray-500 transition cursor-default">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-gray-500" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
-                        <h3 class="text-blue-400 font-semibold group-hover:underline">internal-gamtek-system</h3>
-                        <span class="text-xs border border-term-border text-gray-400 px-2 rounded-full">Private</span>
+        <section class="fade-in">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <div class="shrink-0 relative">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                        <img src="profile.png" alt="Muhammad Zaidan" class="w-full h-full object-cover">
                     </div>
-                    <span class="text-xs text-gray-500">PHP</span>
-                </div>
-                <p class="text-sm text-gray-400 mb-4">
-                    Sistem manajemen spesifikasi teknis terpusat untuk akurasi data ke buyer. Menghapus redundansi dan error manual.
-                </p>
-                <div class="flex items-center gap-4 text-xs text-gray-500">
-                    <div class="flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                        CodeIgniter
+                    <div class="absolute -bottom-3 -right-3 bg-white p-2 rounded-full shadow-md border border-slate-100">
+                        <i class="fa-solid fa-code text-accent text-lg"></i>
                     </div>
-                    <div>Updated 2 days ago</div>
                 </div>
-            </div>
 
-            <div class="group bg-term-card border border-term-border rounded-md p-4 hover:border-gray-500 transition cursor-default">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-gray-500" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
-                        <h3 class="text-blue-400 font-semibold group-hover:underline">pos-hybrid-app</h3>
-                        <span class="text-xs border border-term-border text-gray-400 px-2 rounded-full">Public</span>
-                    </div>
-                    <span class="text-xs text-gray-500">TypeScript</span>
-                </div>
-                <p class="text-sm text-gray-400 mb-4">
-                    Aplikasi Kasir (POS) Offline-First. Sinkronisasi data otomatis saat online. Arsitektur hybrid Android & Web.
-                </p>
-                <div class="flex items-center gap-4 text-xs text-gray-500">
-                    <div class="flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                        Next.js
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-green-400"></span>
-                        Capacitor
+                <div class="text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-3 text-slate-900">Muhammad Zaidan</h1>
+                    <p class="text-lg text-secondary font-medium mb-4" data-key="role">Full Stack Developer</p>
+                    <p class="text-secondary leading-relaxed max-w-lg mx-auto md:mx-0 text-sm md:text-base" data-key="bio">
+                        Spesialis dalam pengembangan sistem internal perusahaan dan aplikasi web modern yang efisien. Fokus pada performa, skalabilitas, dan pengalaman pengguna yang seamless.
+                    </p>
+                    
+                    <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
+                        <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600 flex items-center gap-2 shadow-sm">
+                            <i class="fa-brands fa-react text-blue-400"></i> Next.js / React
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600 flex items-center gap-2 shadow-sm">
+                            <i class="fa-brands fa-php text-indigo-500"></i> PHP CodeIgniter
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-database text-orange-400"></i> MySQL
+                        </span>
                     </div>
                 </div>
             </div>
-
-            <div class="group bg-term-card border border-term-border rounded-md p-4 hover:border-gray-500 transition cursor-default">
-                <div class="flex justify-between items-start mb-2">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-gray-500" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
-                        <h3 class="text-blue-400 font-semibold group-hover:underline">tiktok-style-player</h3>
-                    </div>
-                    <span class="text-xs text-gray-500">React</span>
-                </div>
-                <p class="text-sm text-gray-400 mb-4">
-                    Komponen video player vertikal dengan scroll yang smooth. Menggunakan HLS.js untuk streaming performa tinggi.
-                </p>
-                <div class="flex items-center gap-4 text-xs text-gray-500">
-                    <div class="flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                        React
-                    </div>
-                </div>
-            </div>
-
         </section>
 
-        <footer class="pt-8 border-t border-term-border w-full text-center">
-             <p class="text-gray-500 text-sm mb-4">
-                <span class="text-term-green">root@zaidan-pc</span>:~/portfolio# <span class="text-white">./contact-me.sh</span>
-            </p>
-            <a href="mailto:email@anda.com" class="inline-flex items-center gap-2 px-4 py-2 bg-term-green/10 text-term-green border border-term-green/30 rounded hover:bg-term-green/20 transition text-sm">
-                <span>✉️</span> Kirim Email
-            </a>
-            <div class="mt-6 text-xs text-gray-600">
-                &copy; 2026 Muhammad Zaidan. All systems operational.
+        <hr class="border-slate-200">
+
+        <section>
+            <h2 class="text-xl font-bold mb-8 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-accent"></i> 
+                <span data-key="projects_title">Selected Projects</span>
+            </h2>
+
+            <div class="grid gap-6">
+                
+                <div class="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-accent/30 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-indigo-50 text-indigo-600 w-10 h-10 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-server text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-accent transition" data-key="p1_title">Sistem Internal Gamtek</h3>
+                    <p class="text-sm text-secondary leading-relaxed mb-4" data-key="p1_desc">
+                        Aplikasi manajemen terpusat untuk data spesifikasi teknis. Dirancang untuk meminimalisir kesalahan data (human error) saat komunikasi dengan buyer. Menggunakan PHP CodeIgniter & MySQL untuk stabilitas data.
+                    </p>
+                    <div class="flex gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2 py-1 rounded">Backend Logic</span>
+                        <span class="bg-slate-100 px-2 py-1 rounded">Database Design</span>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-accent/30 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-emerald-50 text-emerald-600 w-10 h-10 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-mobile-screen text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-emerald-600 bg-emerald-50 px-2 py-1 rounded">In Progress</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-accent transition" data-key="p2_title">Hybrid POS Application</h3>
+                    <p class="text-sm text-secondary leading-relaxed mb-4" data-key="p2_desc">
+                        Aplikasi kasir (Point of Sale) modern yang mendukung mode Offline-First. Menggunakan Capacitor untuk berjalan di Android dan Web, serta LocalStorage untuk sinkronisasi data pintar.
+                    </p>
+                    <div class="flex gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2 py-1 rounded">Next.js</span>
+                        <span class="bg-slate-100 px-2 py-1 rounded">Capacitor</span>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-accent/30 transition duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="bg-rose-50 text-rose-600 w-10 h-10 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-play text-lg"></i>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded">Component</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-accent transition" data-key="p3_title">Vertical Video Player</h3>
+                    <p class="text-sm text-secondary leading-relaxed mb-4" data-key="p3_desc">
+                        Pengembangan komponen pemutar video vertikal (TikTok-style) dengan performa tinggi. Mengimplementasikan HLS.js untuk streaming adaptif dan UI responsif berbasis React.
+                    </p>
+                    <div class="flex gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2 py-1 rounded">React</span>
+                        <span class="bg-slate-100 px-2 py-1 rounded">HLS.js</span>
+                    </div>
+                </div>
+
             </div>
-        </footer>
+        </section>
+        
+        <section class="bg-primary rounded-2xl p-8 text-center text-white shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+            <h2 class="text-xl font-bold mb-3" data-key="cta_title">Siap untuk Bekerja Sama?</h2>
+            <p class="text-slate-300 text-sm mb-6 max-w-md mx-auto" data-key="cta_desc">
+                Saya terbuka untuk peluang kerja full-time atau proyek freelance yang menantang.
+            </p>
+            <a href="mailto:email@anda.com" class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold text-sm hover:bg-slate-100 transition shadow-lg">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span data-key="cta_btn">Hubungi Saya via Email</span>
+            </a>
+        </section>
 
-    </div>
+    </main>
 
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-xs">
+        <p>&copy; 2026 Muhammad Zaidan. Built with <i class="fa-solid fa-heart text-red-400 mx-1"></i> HTML & Tailwind.</p>
+    </footer>
+
+    <script>
+        const content = {
+            id: {
+                nav_contact: "Kontak",
+                role: "Full Stack Developer",
+                bio: "Spesialis dalam pengembangan sistem internal perusahaan dan aplikasi web modern yang efisien. Fokus pada performa, skalabilitas, dan pengalaman pengguna yang seamless.",
+                projects_title: "Proyek Terpilih",
+                p1_title: "Sistem Internal Gamtek",
+                p1_desc: "Aplikasi manajemen terpusat untuk data spesifikasi teknis. Dirancang untuk meminimalisir kesalahan data (human error) saat komunikasi dengan buyer. Menggunakan PHP CodeIgniter & MySQL untuk stabilitas data.",
+                p2_title: "Hybrid POS Application",
+                p2_desc: "Aplikasi kasir (Point of Sale) modern yang mendukung mode Offline-First. Menggunakan Capacitor untuk berjalan di Android dan Web, serta LocalStorage untuk sinkronisasi data pintar.",
+                p3_title: "Vertical Video Player",
+                p3_desc: "Pengembangan komponen pemutar video vertikal (TikTok-style) dengan performa tinggi. Mengimplementasikan HLS.js untuk streaming adaptif dan UI responsif berbasis React.",
+                cta_title: "Siap untuk Bekerja Sama?",
+                cta_desc: "Saya terbuka untuk peluang kerja full-time atau proyek freelance yang menantang.",
+                cta_btn: "Hubungi Saya via Email"
+            },
+            en: {
+                nav_contact: "Contact",
+                role: "Full Stack Developer",
+                bio: "Specializing in corporate internal systems and efficient modern web applications. Focused on performance, scalability, and seamless user experiences.",
+                projects_title: "Selected Projects",
+                p1_title: "Gamtek Internal System",
+                p1_desc: "Centralized management app for technical specification data. Designed to minimize human error during buyer communication. Built with PHP CodeIgniter & MySQL for data stability.",
+                p2_title: "Hybrid POS Application",
+                p2_desc: "Modern Point of Sale (POS) application supporting Offline-First mode. Uses Capacitor for Android/Web deployment and LocalStorage for smart data sync.",
+                p3_title: "Vertical Video Player",
+                p3_desc: "High-performance vertical video player component (TikTok-style). Implements HLS.js for adaptive streaming and responsive React-based UI.",
+                cta_title: "Ready to Collaborate?",
+                cta_desc: "I am open to full-time opportunities or challenging freelance projects.",
+                cta_btn: "Contact Me via Email"
+            }
+        };
+
+        let currentLang = 'id';
+
+        function toggleLang() {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            document.getElementById('lang-indicator').textContent = currentLang.toUpperCase();
+            
+            // Update Text
+            document.querySelectorAll('[data-key]').forEach(el => {
+                el.style.opacity = '0'; // Fade out
+                setTimeout(() => {
+                    const key = el.getAttribute('data-key');
+                    if (content[currentLang][key]) {
+                        el.textContent = content[currentLang][key];
+                    }
+                    el.style.opacity = '1'; // Fade in
+                }, 200);
+            });
+        }
+    </script>
 </body>
 </html>
