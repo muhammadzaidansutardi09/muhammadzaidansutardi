@@ -23,6 +23,17 @@
                     colors: {
                         primary: '#2563EB', // Blue 600
                         dark: '#0F172A',    // Slate 900
+                    },
+                    animation: {
+                        'blob': "blob 7s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        }
                     }
                 }
             }
@@ -30,19 +41,27 @@
     </script>
     <style>
         /* Hide CV Template from Web View */
-        #cv-template {
-            display: none;
-        }
+        #cv-template { display: none; }
+        
         .gradient-text {
             background: linear-gradient(to right, #2563EB, #06B6D4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
+        /* Gallery hover effect */
+        .gallery-item {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans selection:bg-primary selection:text-white">
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-dark">MZS<span class="text-primary">.</span></a>
             
@@ -58,9 +77,9 @@
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-6">
+    <section class="pt-32 pb-20 px-6 overflow-hidden">
         <div class="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2">
+            <div class="lg:w-1/2 z-10">
                 <div class="inline-block px-4 py-1.5 mb-4 bg-blue-100 text-primary rounded-full text-sm font-semibold tracking-wide uppercase">
                     Full Stack Developer & Technical Creative
                 </div>
@@ -76,134 +95,162 @@
                         <span data-i18n="download_cv">Download CV Resmi</span>
                         <i class="fa-solid fa-file-arrow-down group-hover:animate-bounce"></i>
                     </button>
-                    <a href="https://wa.me/6281394298288" class="flex items-center gap-3 bg-white text-dark border border-slate-200 px-8 py-3 rounded-xl font-semibold hover:bg-slate-50 transition duration-300">
-                        WhatsApp
+                    <a href="#portfolio" class="flex items-center gap-3 bg-white text-dark border border-slate-200 px-8 py-3 rounded-xl font-semibold hover:bg-slate-50 transition duration-300" data-i18n="view_portfolio">
+                        Lihat Portfolio
                     </a>
                 </div>
             </div>
             
             <div class="lg:w-1/2 flex justify-center relative">
-                <div class="absolute w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob top-0 right-10"></div>
-                <div class="absolute w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000 bottom-10 left-10"></div>
+                <div class="absolute w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob top-0 right-10"></div>
+                <div class="absolute w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000 bottom-10 left-10"></div>
                 
-                <div class="relative w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
-                    <img src="https://ui-avatars.com/api/?name=Muhammad+Zaidan&background=0F172A&color=fff&size=512" alt="Muhammad Zaidan Sutardi" class="object-cover w-full h-full">
+                <div class="relative z-10 w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition duration-500 border-4 border-white">
+                    <img src="profile.png" alt="Muhammad Zaidan Sutardi" class="object-cover w-full h-full" onerror="this.src='https://ui-avatars.com/api/?name=Muhammad+Zaidan&background=0F172A&color=fff&size=512'">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <p class="text-center text-slate-500 font-medium mb-8 uppercase tracking-widest" data-i18n="tech_stack_title">Teknologi yang Saya Gunakan</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100">
+                 <i class="fa-brands fa-php text-5xl text-indigo-600" title="PHP"></i>
+                 <i class="fa-solid fa-fire text-5xl text-orange-500" title="CodeIgniter"></i>
+                 <i class="fa-brands fa-react text-5xl text-cyan-500" title="React/Next.js"></i>
+                 <i class="fa-brands fa-js text-5xl text-yellow-500" title="JavaScript"></i>
+                 <i class="fa-solid fa-database text-5xl text-slate-600" title="MySQL"></i>
+                 <i class="fa-brands fa-css3-alt text-5xl text-blue-500" title="Tailwind CSS"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                 <h2 class="text-3xl lg:text-4xl font-bold text-dark mb-4" data-i18n="projects_title">Proyek Unggulan <span class="text-primary">.</span></h2>
+                 <p class="text-slate-600 max-w-xl mx-auto" data-i18n="projects_subtitle">Berikut adalah beberapa aplikasi dan sistem yang telah saya bangun untuk keperluan bisnis dan operasional.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                         <img src="https://source.unsplash.com/collection/9637675/800x600?tech,dashboard" alt="Sistem Gamtek" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-folder-open text-primary"></i>
+                         </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold uppercase text-primary mb-2 block">Internal System</span>
+                        <h3 class="text-xl font-bold mb-3 text-dark group-hover:text-primary transition">Sistem Internal "Gamtek"</h3>
+                        <p class="text-slate-600 text-sm mb-6 line-clamp-3" data-i18n="desc_gamtek">
+                            Sistem sentralisasi gambar teknik untuk meminimalisir kesalahan data ke buyer. Fitur upload PDF, manajemen database MySQL, dan validasi data.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-50 text-indigo-600 px-2.5 py-0.5 rounded text-xs font-semibold">CodeIgniter</span>
+                            <span class="bg-indigo-50 text-indigo-600 px-2.5 py-0.5 rounded text-xs font-semibold">MySQL</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://source.unsplash.com/collection/9637675/800x600?pos,mobile" alt="Cross-Platform POS" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-mobile-screen text-primary"></i>
+                         </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold uppercase text-primary mb-2 block">Mobile Web App</span>
+                        <h3 class="text-xl font-bold mb-3 text-dark group-hover:text-primary transition">Cross-Platform POS</h3>
+                        <p class="text-slate-600 text-sm mb-6 line-clamp-3" data-i18n="desc_pos">
+                            Aplikasi kasir hybrid (Web & Android) dengan kemampuan offline menggunakan Capacitor & LocalStorage/IndexedDB.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-cyan-50 text-cyan-600 px-2.5 py-0.5 rounded text-xs font-semibold">Next.js</span>
+                            <span class="bg-cyan-50 text-cyan-600 px-2.5 py-0.5 rounded text-xs font-semibold">Capacitor</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                            Detail App <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://source.unsplash.com/collection/9637675/800x600?fintech,payment" alt="PPOB System" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-credit-card text-primary"></i>
+                         </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold uppercase text-primary mb-2 block">Fintech Integration</span>
+                        <h3 class="text-xl font-bold mb-3 text-dark group-hover:text-primary transition">PPOB Payment System</h3>
+                        <p class="text-slate-600 text-sm mb-6 line-clamp-3" data-i18n="desc_ppob">
+                            Aplikasi pembayaran digital terintegrasi dengan Digiflazz (Produk) dan Midtrans (Gateway). Hosting modern di Vercel.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded text-xs font-semibold">Next.js</span>
+                            <span class="bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded text-xs font-semibold">Midtrans API</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12" data-i18n="skills_title">Keahlian & Teknologi</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-brands fa-php text-4xl text-indigo-600 mb-2"></i><p>PHP</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-solid fa-fire text-4xl text-orange-500 mb-2"></i><p>CodeIgniter</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-brands fa-react text-4xl text-cyan-500 mb-2"></i><p>React/Next.js</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-brands fa-js text-4xl text-yellow-500 mb-2"></i><p>JavaScript</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-solid fa-database text-4xl text-slate-600 mb-2"></i><p>MySQL</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-brands fa-css3-alt text-4xl text-blue-500 mb-2"></i><p>Tailwind CSS</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-solid fa-camera text-4xl text-slate-800 mb-2"></i><p data-i18n="skill_photo">Fotografi</p></div>
-                <div class="p-4 hover:bg-slate-50 rounded-xl transition"><i class="fa-solid fa-palette text-4xl text-purple-500 mb-2"></i><p>Canva Design</p></div>
+            <div class="text-center mb-12">
+                 <h2 class="text-3xl lg:text-4xl font-bold text-dark mb-4" data-i18n="creative_title">Galeri Kreatif <span class="text-primary">.</span></h2>
+                 <p class="text-slate-600 max-w-xl mx-auto" data-i18n="creative_subtitle">Kumpulan hasil karya fotografi dan desain grafis yang saya kerjakan untuk berbagai kebutuhan.</p>
+            </div>
+
+            <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+                
+                <div class="break-inside-avoid rounded-xl overflow-hidden cursor-pointer gallery-item" onclick="openModal(this.querySelector('img').src)">
+                    <img src="https://source.unsplash.com/random/600x800?portrait,photography" alt="Photography Work 1" class="w-full h-auto object-cover">
+                    <div class="hidden md:block text-center text-xs text-slate-500 mt-2">Fotografi Portrait</div>
+                </div>
+                
+                 <div class="break-inside-avoid rounded-xl overflow-hidden cursor-pointer gallery-item" onclick="openModal(this.querySelector('img').src)">
+                    <img src="https://source.unsplash.com/random/600x600?graphic,design,flyer" alt="Design Work 1" class="w-full h-auto object-cover">
+                     <div class="hidden md:block text-center text-xs text-slate-500 mt-2">Desain Promosi Canva</div>
+                </div>
+
+                <div class="break-inside-avoid rounded-xl overflow-hidden cursor-pointer gallery-item" onclick="openModal(this.querySelector('img').src)">
+                    <img src="https://source.unsplash.com/random/600x400?product,photography" alt="Photography Work 2" class="w-full h-auto object-cover">
+                     <div class="hidden md:block text-center text-xs text-slate-500 mt-2">Fotografi Produk</div>
+                </div>
+
+                 <div class="break-inside-avoid rounded-xl overflow-hidden cursor-pointer gallery-item" onclick="openModal(this.querySelector('img').src)">
+                    <img src="https://source.unsplash.com/random/600x900?socialmedia,post,design" alt="Design Work 2" class="w-full h-auto object-cover">
+                     <div class="hidden md:block text-center text-xs text-slate-500 mt-2">Konten Sosial Media</div>
+                </div>
+                 <div class="break-inside-avoid rounded-xl overflow-hidden cursor-pointer gallery-item" onclick="openModal(this.querySelector('img').src)">
+                    <img src="https://source.unsplash.com/random/800x600?event,photography" alt="Photography Work 3" class="w-full h-auto object-cover">
+                     <div class="hidden md:block text-center text-xs text-slate-500 mt-2">Dokumentasi Event</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-dark" data-i18n="projects_title">Proyek Unggulan</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="p-8">
-                        <div class="flex items-center gap-2 mb-4">
-                            <i class="fa-solid fa-folder-open text-primary"></i>
-                            <span class="text-xs font-bold uppercase text-slate-400">Internal System</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Sistem Internal "Gamtek"</h3>
-                        <p class="text-slate-600 text-sm mb-6" data-i18n="desc_gamtek">
-                            Sistem sentralisasi gambar teknik untuk meminimalisir kesalahan data ke buyer. Fitur upload PDF, manajemen database MySQL, dan validasi data.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-md text-xs font-semibold">CodeIgniter</span>
-                            <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-md text-xs font-semibold">MySQL</span>
-                        </div>
-                    </div>
-                </div>
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white text-4xl hover:text-primary transition">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <img id="modalImage" src="" alt="Expanded View" class="max-w-full max-h-[90vh] rounded-xl shadow-2xl animate-blob">
+    </div>
 
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="p-8">
-                        <div class="flex items-center gap-2 mb-4">
-                            <i class="fa-solid fa-mobile-screen text-primary"></i>
-                            <span class="text-xs font-bold uppercase text-slate-400">Mobile Web App</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Cross-Platform POS</h3>
-                        <p class="text-slate-600 text-sm mb-6" data-i18n="desc_pos">
-                            Aplikasi kasir hybrid (Web & Android) dengan kemampuan offline menggunakan Capacitor & LocalStorage/IndexedDB.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-cyan-50 text-cyan-600 px-3 py-1 rounded-md text-xs font-semibold">Next.js</span>
-                            <span class="bg-cyan-50 text-cyan-600 px-3 py-1 rounded-md text-xs font-semibold">Capacitor</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="p-8">
-                        <div class="flex items-center gap-2 mb-4">
-                            <i class="fa-solid fa-credit-card text-primary"></i>
-                            <span class="text-xs font-bold uppercase text-slate-400">Fintech Integration</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">PPOB Payment System</h3>
-                        <p class="text-slate-600 text-sm mb-6" data-i18n="desc_ppob">
-                            Aplikasi pembayaran digital terintegrasi dengan Digiflazz (Produk) dan Midtrans (Gateway). Hosting modern di Vercel.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-xs font-semibold">Next.js</span>
-                            <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-xs font-semibold">Midtrans API</span>
-                        </div>
-                    </div>
-                </div>
-                
-                 <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="p-8">
-                        <div class="flex items-center gap-2 mb-4">
-                            <i class="fa-solid fa-play text-primary"></i>
-                            <span class="text-xs font-bold uppercase text-slate-400">Multimedia</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">TikTok Style Player</h3>
-                        <p class="text-slate-600 text-sm mb-6" data-i18n="desc_video">
-                            Video player vertikal dengan fitur scroll, dibangun menggunakan React dan HLS.js untuk streaming yang optimal.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-pink-50 text-pink-600 px-3 py-1 rounded-md text-xs font-semibold">React</span>
-                            <span class="bg-pink-50 text-pink-600 px-3 py-1 rounded-md text-xs font-semibold">HLS.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition duration-300">
-                    <div class="p-8">
-                        <div class="flex items-center gap-2 mb-4">
-                            <i class="fa-solid fa-chart-line text-primary"></i>
-                            <span class="text-xs font-bold uppercase text-slate-400">Data Analytics</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Operational Dashboard</h3>
-                        <p class="text-slate-600 text-sm mb-6" data-i18n="desc_excel">
-                            Analisis data operasional kendaraan (KM/BBM) menggunakan Pivot Tables dan Combo Charts untuk laporan manajemen.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-50 text-green-600 px-3 py-1 rounded-md text-xs font-semibold">Excel</span>
-                            <span class="bg-green-50 text-green-600 px-3 py-1 rounded-md text-xs font-semibold">Data Viz</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <section class="py-20 bg-dark text-white">
         <div class="container mx-auto px-6 text-center">
@@ -213,18 +260,24 @@
             </p>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-6 border border-slate-700 rounded-xl hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-code text-4xl text-primary mb-4"></i>
+                <div class="p-6 border border-slate-700 rounded-xl hover:bg-slate-800 transition hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-primary/20 text-primary rounded-lg flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2" data-i18n="svc_web">Web Development</h3>
                     <p class="text-sm text-slate-400">Pembuatan website kantor, toko online, atau sistem internal custom.</p>
                 </div>
-                <div class="p-6 border border-slate-700 rounded-xl hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-pen-nib text-4xl text-primary mb-4"></i>
+                <div class="p-6 border border-slate-700 rounded-xl hover:bg-slate-800 transition hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2" data-i18n="svc_design">Design & Content</h3>
                     <p class="text-sm text-slate-400">Desain materi promosi Canva, pembuatan CV menarik, dan layout dokumen.</p>
                 </div>
-                <div class="p-6 border border-slate-700 rounded-xl hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-camera-retro text-4xl text-primary mb-4"></i>
+                <div class="p-6 border border-slate-700 rounded-xl hover:bg-slate-800 transition hover:-translate-y-2">
+                     <div class="w-14 h-14 bg-orange-500/20 text-orange-400 rounded-lg flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2" data-i18n="svc_photo">Photography</h3>
                     <p class="text-sm text-slate-400">Jasa fotografi untuk produk, event, atau kebutuhan visual lainnya.</p>
                 </div>
@@ -237,22 +290,22 @@
             <h2 class="text-4xl font-bold mb-8">Let's Work Together!</h2>
             
             <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-                <a href="mailto:muhammadzaidansutardi@gmail.com" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition">
-                    <i class="fa-regular fa-envelope text-primary text-xl"></i>
+                <a href="mailto:muhammadzaidansutardi@gmail.com" class="group flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition border border-slate-700 hover:border-primary">
+                    <i class="fa-regular fa-envelope text-primary text-xl group-hover:scale-110 transition"></i>
                     <div class="text-left">
                         <p class="text-xs text-slate-400">Email</p>
                         <p class="font-medium">muhammadzaidansutardi@gmail.com</p>
                     </div>
                 </a>
-                <a href="https://wa.me/6281394298288" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition">
-                    <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
+                <a href="https://wa.me/6281394298288" class="group flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition border border-slate-700 hover:border-green-500">
+                    <i class="fa-brands fa-whatsapp text-green-500 text-xl group-hover:scale-110 transition"></i>
                     <div class="text-left">
                         <p class="text-xs text-slate-400">WhatsApp</p>
                         <p class="font-medium">+62 813 9429 8288</p>
                     </div>
                 </a>
-                <a href="#" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition">
-                    <i class="fa-brands fa-linkedin text-blue-500 text-xl"></i>
+                <a href="https://linkedin.com/in/zaidan-sutardi" target="_blank" class="group flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition border border-slate-700 hover:border-blue-400">
+                    <i class="fa-brands fa-linkedin text-blue-400 text-xl group-hover:scale-110 transition"></i>
                     <div class="text-left">
                         <p class="text-xs text-slate-400">LinkedIn</p>
                         <p class="font-medium">Muhammad Zaidan Sutardi</p>
@@ -265,18 +318,15 @@
     </footer>
 
     <div id="cv-template" style="width: 210mm; background: white; padding: 10mm; font-family: 'Outfit', sans-serif; color: #333;">
-        
         <div style="border-bottom: 2px solid #2563EB; padding-bottom: 15px; margin-bottom: 20px;">
             <h1 style="font-size: 28px; font-weight: 800; color: #0F172A; text-transform: uppercase; margin: 0;">Muhammad Zaidan Sutardi</h1>
             <p style="font-size: 14px; color: #2563EB; font-weight: 600; letter-spacing: 1px; margin: 5px 0;">FULL STACK DEVELOPER | TECHNICAL ANALYST</p>
-            
             <div style="font-size: 11px; color: #555; margin-top: 10px; display: flex; gap: 15px;">
                 <span><i class="fa-solid fa-envelope"></i> muhammadzaidansutardi@gmail.com</span> |
                 <span><i class="fa-brands fa-whatsapp"></i> +62 813 9429 8288</span> |
                 <span><i class="fa-brands fa-linkedin"></i> linkedin.com/in/zaidan-sutardi</span>
             </div>
         </div>
-
         <div style="display: flex; gap: 20px;">
             <div style="flex: 2;">
                 <div style="margin-bottom: 20px;">
@@ -285,10 +335,8 @@
                         <span id="cv-summary">Experienced Developer with a strong background in PHP (CodeIgniter) and Modern JavaScript (Next.js/React). Proven track record in building internal systems ("Gamtek"), POS applications, and payment integrations. Flexible professional capable of handling full-cycle development and data analysis.</span>
                     </p>
                 </div>
-
                 <div style="margin-bottom: 20px;">
                     <h3 style="font-size: 14px; font-weight: 700; color: #0F172A; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px;">KEY PROJECTS</h3>
-                    
                     <div style="margin-bottom: 12px;">
                         <h4 style="font-size: 12px; font-weight: 700; margin: 0;">Internal Gamtek System</h4>
                         <p style="font-size: 10px; color: #666; margin: 2px 0;"><i>PHP, CodeIgniter, MySQL</i></p>
@@ -297,7 +345,6 @@
                             <li>Implemented complex database schemas and PDF handling features.</li>
                         </ul>
                     </div>
-
                     <div style="margin-bottom: 12px;">
                         <h4 style="font-size: 12px; font-weight: 700; margin: 0;">PPOB Payment Integration</h4>
                         <p style="font-size: 10px; color: #666; margin: 2px 0;"><i>Next.js, Midtrans, Digiflazz</i></p>
@@ -306,7 +353,6 @@
                             <li>Deployed on Vercel with high availability and security standards.</li>
                         </ul>
                     </div>
-
                     <div style="margin-bottom: 12px;">
                         <h4 style="font-size: 12px; font-weight: 700; margin: 0;">Hybrid POS Application</h4>
                         <p style="font-size: 10px; color: #666; margin: 2px 0;"><i>Next.js, Capacitor, IndexedDB</i></p>
@@ -317,7 +363,6 @@
                     </div>
                 </div>
             </div>
-
             <div style="flex: 1; background: #F8FAFC; padding: 10px; border-radius: 5px;">
                 <div style="margin-bottom: 20px;">
                     <h3 style="font-size: 12px; font-weight: 700; color: #0F172A; margin-bottom: 10px;">TECHNICAL SKILLS</h3>
@@ -327,7 +372,6 @@
                         <p style="margin-bottom: 5px;"><strong>Tools:</strong><br>Git, Vercel, Excel (Pivot/Charts)</p>
                     </div>
                 </div>
-
                 <div style="margin-bottom: 20px;">
                     <h3 style="font-size: 12px; font-weight: 700; color: #0F172A; margin-bottom: 10px;">CREATIVE & OTHERS</h3>
                     <div style="font-size: 11px; color: #444;">
@@ -343,20 +387,38 @@
     </div>
 
     <script>
-        // Language Data
+        // Modal/Lightbox Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            modalImg.src = src;
+            document.body.style.overflow = 'hidden'; // Disable scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+
+        // Language Data (Tambahkan teks baru untuk section baru)
         const translations = {
             id: {
                 hire_me: "Hubungi Saya",
                 hero_desc: "Pengembang web profesional dengan spesialisasi sistem internal perusahaan, aplikasi POS, dan integrasi pembayaran. Fleksibel untuk kebutuhan desain grafis & fotografi. Siap membantu bisnis Anda berkembang atau bergabung dengan tim perusahaan modern.",
                 download_cv: "Download CV Resmi",
-                skills_title: "Keahlian & Teknologi",
+                view_portfolio: "Lihat Portfolio",
+                tech_stack_title: "Teknologi yang Saya Gunakan",
                 projects_title: "Proyek Unggulan",
+                projects_subtitle: "Berikut adalah beberapa aplikasi dan sistem yang telah saya bangun untuk keperluan bisnis dan operasional.",
                 desc_gamtek: "Sistem sentralisasi gambar teknik untuk meminimalisir kesalahan data ke buyer. Fitur upload PDF, manajemen database MySQL, dan validasi data.",
                 desc_pos: "Aplikasi kasir hybrid (Web & Android) dengan kemampuan offline menggunakan Capacitor & LocalStorage/IndexedDB.",
                 desc_ppob: "Aplikasi pembayaran digital terintegrasi dengan Digiflazz (Produk) dan Midtrans (Gateway). Hosting modern di Vercel.",
-                desc_video: "Video player vertikal dengan fitur scroll, dibangun menggunakan React dan HLS.js untuk streaming yang optimal.",
-                desc_excel: "Analisis data operasional kendaraan (KM/BBM) menggunakan Pivot Tables dan Combo Charts untuk laporan manajemen.",
-                skill_photo: "Fotografi",
+                creative_title: "Galeri Kreatif",
+                creative_subtitle: "Kumpulan hasil karya fotografi dan desain grafis yang saya kerjakan untuk berbagai kebutuhan.",
                 services_title: "Siap Membantu Project Anda",
                 services_subtitle: "Selain bekerja secara profesional, saya menawarkan jasa freelance yang fleksibel dan berkualitas.",
                 svc_web: "Web Development",
@@ -367,14 +429,15 @@
                 hire_me: "Hire Me",
                 hero_desc: "Professional Web Developer specializing in internal corporate systems, POS applications, and payment integrations. Flexible for graphic design & photography needs. Ready to help your business grow or join a modern corporate team.",
                 download_cv: "Download Official CV",
-                skills_title: "Skills & Technologies",
+                view_portfolio: "View Portfolio",
+                tech_stack_title: "Technologies I Use",
                 projects_title: "Featured Projects",
+                projects_subtitle: "Here are some applications and systems I've built for business and operational needs.",
                 desc_gamtek: "Centralized technical drawing system to minimize data errors with buyers. Features PDF upload, MySQL database management, and data validation.",
                 desc_pos: "Hybrid POS (Web & Android) application with offline capabilities using Capacitor & LocalStorage/IndexedDB.",
                 desc_ppob: "Digital payment app integrated with Digiflazz (Products) and Midtrans (Gateway). Modern hosting on Vercel.",
-                desc_video: "Vertical scroll video player built with React and HLS.js for optimal streaming performance.",
-                desc_excel: "Operational data analysis (Mileage/Fuel) using Pivot Tables and Combo Charts for management reporting.",
-                skill_photo: "Photography",
+                creative_title: "Creative Gallery",
+                creative_subtitle: "A collection of photography and graphic design work I've done for various needs.",
                 services_title: "Ready to Assist Your Project",
                 services_subtitle: "Apart from professional roles, I offer flexible and high-quality freelance services.",
                 svc_web: "Web Development",
@@ -389,7 +452,6 @@
             currentLang = currentLang === 'id' ? 'en' : 'id';
             document.getElementById('lang-label').innerText = currentLang.toUpperCase();
             
-            // Update Text
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[currentLang][key]) {
@@ -397,20 +459,15 @@
                 }
             });
 
-            // Update CV Content Language slightly (Optional)
-            const summary = currentLang === 'id' 
+             const summary = currentLang === 'id' 
                 ? "Pengembang Berpengalaman dengan latar belakang kuat di PHP (CodeIgniter) dan Modern JavaScript (Next.js/React). Terbukti dalam membangun sistem internal, aplikasi POS, dan integrasi pembayaran."
                 : "Experienced Developer with a strong background in PHP (CodeIgniter) and Modern JavaScript (Next.js/React). Proven track record in building internal systems, POS applications, and payment integrations.";
             document.getElementById('cv-summary').innerText = summary;
         }
 
-        // PDF Generation Function
         function generatePDF() {
             const element = document.getElementById('cv-template');
-            
-            // Show temporarily to render (technically html2pdf can clone hidden elements but sometimes style breaks)
             element.style.display = 'block';
-
             const opt = {
                 margin: 0,
                 filename: 'CV_Muhammad_Zaidan_Sutardi.pdf',
@@ -418,8 +475,6 @@
                 html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-
-            // Generate and then hide again
             html2pdf().set(opt).from(element).save().then(() => {
                 element.style.display = 'none';
             });
